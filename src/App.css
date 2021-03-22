@@ -1,38 +1,330 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body{
+  font-family: 'Montserrat', sans-serif;
+}
+input{
+  font-family: 'Montserrat', sans-serif;
+}
+.App{
+  width: 100%;
+  height: 100vh;
+  background-color: #00014a;
+}
+
+.btn-container{
+  padding-top: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.btn-container button{
+  padding: 5px;
+  background-color: rgb(24, 128, 24);
+  border:none;
+  color: white;
+  margin: 10px;
+}
+
+.Sidebar{
+  position: absolute;
+  left: 0;
+  height: 100vh;
+  width: 35%;
+  transition: 1s;
+  background-color: rgba(36, 0, 95, 0.9);
+}
+
+.swip{
+  height: 100vh;
+}
+
+
+.Main{
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 65%;
+  transition: 1s;
+}
+
+@media only screen and (max-width: 900px){
+  .Main{
+    width: 100%;
+    transition: 1s;
+  }
+
+  .Sidebar{
+    left: -35%;
+    transition: 1s;
+  }
+}
+.toggle-button{
+  opacity: 0;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  float: right;
+  position: relative;
+  transform: translate(100%,100%);
+  text-align: center;
+  z-index: 3;
+}
+
+@media only screen and (max-width: 900px){
+  .sidebarToggle{
+    left:0 ;
+    z-index: 1;
+    width: 80%;
+  }
+  .toggle-button{
+    opacity: 1;
+  }
+}
+
+.rotate{
+  transform: rotate(180deg);
+}
+
+.Main .header{
+  height: 10%;
+  width: 100%;
+  background-color: rgba(8, 3, 80, 0.9);
+  overflow-y: hidden;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+.Main .body{
+  width: 100%;
+  height: 80%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: flex-start;
+}
+
+.Main .footer{
+  width: 100%;
+  height: 10%;
+  background-color: rgb(255,255,255,0.14);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer input{
+  width:40%;
+  height: 60%;
+  border:none;
+  border-radius: 5px;
+  margin-left: 10%;
+  transition: 0.8s;
+}
+.footer input:focus, input:hover{
+  outline: none;
+  background-color: rgb(255,255,255,0.88);
+  width:70%;
+  transition: 0.8s;
+}
+.footer svg{
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid #ffff;
+  margin-right: 10%;
+  transition: 0.2s;
+}
+
+.footer svg:hover{
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+@media only screen and (min-width: 900px){
+  .footer svg{
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.body .row{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row .message{
+  max-width: 60%;
+  margin-bottom: 30px;
+}
+
+.others{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.message .content{
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+.others .message .content{
+  color: whitesmoke;
+  background-color: rgba(124, 80, 180, 0.9);
+}
+
+.user .message .content{
+  background-color: rgb(255,255,255,0.88)
+}
+
+.message small{
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.others .message small{
+  color: white;
+  display: flex;
+  justify-content: flex-end;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.swip .header{
+  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: rgba(8, 3, 80, 0.9);
+}
+
+.swip .add-button{
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid #ffff;
+  transition: 0.2s;
+  display: block;
+}
+
+.swip .body{
+  height: 90%;
+  overflow-y: auto;
+}
+
+.swip .row{
+  min-height: 13%;
+  width: 95%;
+  background-color: whitesmoke;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding-left: 7px;
+}
+
+.swip .row:hover{
+  background-color: rgb(223, 215, 215);
+}
+.add-room{
+  position: absolute;
+  left: 5%;
+  top: 2%;
+  width:50%;
+  height:6%;
+  background-color: rgba(243, 236, 243, 0.9);
+  z-index: 100;
+  border-radius:5px;
+}
+
+.add-room input{
+  width: 90%;
+  margin-left:5%;
+  height: 90%;
+  border:none;
+  background-color: transparent;
+}
+
+.add-room input:focus{
+  outline: none;
+}
+
+.placeholder{
+  width: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  width:50%;
+  margin:auto;
+}
+.placeholder h1{
+  margin-top: 20px;
+  font-size: 6vh;
+  color: white;
+}
+
+.room-name{
+  color: white;
+}
+
+@media screen and (max-height: 600px){
+  .Main .body{
+    height:75%
   }
-  to {
-    transform: rotate(360deg);
+  .Main .footer{
+    height: 15%;
+  }
+  .footer input{
+    height: 70%;
+  }
+}
+
+@media screen and (max-height: 600px){
+  .Sidebar .body{
+    height:70%
+  }
+  .Sidebar .header{
+    height: 15%;
+  }
+  .add-room{
+    height:10%;
   }
 }
